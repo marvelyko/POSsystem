@@ -1,0 +1,6 @@
+.idea
+venv/
+*.pyc
+__pychache__/
+silverpos_backup.sql
+product_purchase.csv
