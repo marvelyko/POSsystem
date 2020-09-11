@@ -15,7 +15,7 @@ import hashlib
 import mysql.connector
 import pandas as pd
 import matplotlib.pyplot as plt
-# from kivy.garden.matplotlib.backend_kivyagg import FigureCanvasKivyAgg as FCK
+from kivy.garden.matplotlib import FigureCanvasKivyAgg
 
 Builder.load_file('admin/admin.kv')
 
@@ -212,28 +212,6 @@ class AdminWindow(BoxLayout):
             self.notify.open()
             Clock.schedule_once(self.killswitch,1)
         else:
-            # mydb = mysql.connector.connect(
-            #     host='localhost',
-            #     user='root',
-            #     passwd='899171022mrvl',
-            #     database='posdata'
-            # )
-            # mycursor = mydb.cursor()
-            # sql = 'SELECT * FROM users WHERE user_name=%s'
-            # mycursor.execute(sql)
-            # user = mycursor.fetchall()
-
-            # if user == None:
-            #     self.notify.add_widget(Label(text='[color=#FF0000][b]Invalid Username[/b][/color]',markup=True))
-            #     self.notify.open()
-            #     Clock.schedule_once(self.killswitch,1)
-            # else:
-            #     if first == '':
-            #         first = user['first_name']
-            #     if last == '':
-            #         last = user['last_name']
-            #     if pwd == '':
-            #         pwd = user['password']
             sql = 'UPDATE users SET first_name=%s,last_name=%s,user_name=%s,password=%s,designation=%s WHERE user_name=%s'
             values =[first,last,user,pwd,des,user]
             self.mycursor.execute(sql,values)
